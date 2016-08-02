@@ -1,3 +1,7 @@
+"""
+To find potential unmasked cosmic rays and other imaging errors in SDSS
+"""
+
 import sys
 image1 = str(sys.argv[1]) # SDSS csv file
 
