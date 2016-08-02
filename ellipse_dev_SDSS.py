@@ -33,16 +33,19 @@ dABErr_r = np.array([float(x) for x in deVABErr_r if x != 'deVABErr_r'])
 dABErr_z = np.array([float(x) for x in deVABErr_z if x != 'deVABErr_z'])
 
 from operator import truediv
-def ellipticity(x):
+def ellipticity(x): # converting b/a (semi-major, semi-minor axis) into ellipticity constant
     e = truediv((1-x),(1+x))
     return e
 
 from math import exp
 
-DeVLike_r = [exp(x) for x in ln_DeV_r]
+DeVLike_r = [exp(x) for x in ln_DeV_r] # getting probablities for objects (range: 0 > 1)
 DeVLike_z = [exp(x) for x in ln_DeV_z]
 
-
+"""
+Removing all objects with very high uncertainties (> 22) or no uncertainties. We also are only looking at objects with a 90% chance or 
+higher of being DEV
+"""
 deV_r = [x for (x, y, z) in zip(dAB_r, DeVLike_r, dABErr_r) if y > 0.9 and (z < 22 and z > 0)]
 deV_z = [x for (x, y, z) in zip(dAB_z, DeVLike_z, dABErr_z) if y > 0.9 and (z < 22 and z > 0)]
 
@@ -50,7 +53,7 @@ deV_z = [x for (x, y, z) in zip(dAB_z, DeVLike_z, dABErr_z) if y > 0.9 and (z < 
 dev_r = np.array([ellipticity(x) for x in deV_r])
 dev_z = np.array([ellipticity(x) for x in deV_z])
 
-
+# Histogram of these objects
 import matplotlib.pyplot as plt
 
 plt.hist(dev_r, bins=100, label='SDSS r', color='b', alpha=0.5,)
