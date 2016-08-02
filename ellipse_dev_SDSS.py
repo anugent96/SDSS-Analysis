@@ -1,3 +1,8 @@
+"""
+Finds the objects in SDSS with a 90% chance or higher of being a DEV galaxy and creates a histogram for these objects' ellipticities. 
+Also looks at error in b/a ellipticity and takes out any extremely large uncertainties, as those are probably not consistent values.
+"""
+
 import sys
 image1 = str(sys.argv[1]) # SDSS csv file
 
