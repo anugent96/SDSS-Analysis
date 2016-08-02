@@ -79,6 +79,10 @@ r_E = rE*(rEivar**0.5)
 i_E = iE*(iEivar**0.5)
 z_E = zE*(zEivar**0.5)
 
+"""
+Note: EXP and DEV fluxes/magnitudes give the same potential unmasked CR objects, therefore it was unecessary to solve for EXP and DEV
+for all filters.
+"""
 
 # To find potential cosmic rays (de Vaucouleurs, r)
 RA_D1 = [x for (x, mask1, mask2) in zip(ra, g_D, r_D) if mask1 < 0 and mask2 > 2]
@@ -150,8 +154,8 @@ rE4 = [x for (x, mask1, mask2) in zip(rE3, iE3, gE3) if mask1 < 0 and mask2 < 0]
 iE4 = [x for (x, mask1, mask2) in zip(iE3, iE3, gE3 ) if mask1 < 0 and mask2 < 0]
 zE4 = [x for (x, mask1, mask2) in zip(zE3, iE3, gE3) if mask1 < 0 and mask2 < 0]
 type_E1 = [x for (x, mask1, mask2) in zip (Type_E1, iE3, gE3) if mask1 < 0 and mask2 < 0]
-"""
-print('de Vaucouleurs possible unmasked CRs')
+
+print('de Vaucouleurs possible unmasked CRs in r')
 print('RA , DEC, g, r, z, type')
 i = 0
 while i < len(RA_D2) and i < len(DEC_D2) and i < len(gD2) and i < len(rD2) and i < len(zD2) and i < len(type_D) and i < len(iD2):
@@ -165,7 +169,7 @@ while i < len(RA_D2) and i < len(DEC_D2) and i < len(gD2) and i < len(rD2) and i
     print(x, y, z, w, c, a, b)   
     i +=1
 
-print('Exponential possible unmasked CRs')
+print('Exponential possible unmasked CRs in i')
 print('RA , DEC, g, r, z, type')
 p = 0
 while p < len(RA_E2) and p < len(DEC_E2) and p < len(gE2) and p < len(rE2) and p < len(zE2) and p < len(type_E) and p < len(iE2):
@@ -178,7 +182,7 @@ while p < len(RA_E2) and p < len(DEC_E2) and p < len(gE2) and p < len(rE2) and p
     c = iE2[p]
     print(x, y, z, w, c, a, b)   
     p +=1
-"""    
+    
     
 print('Num possible unmasked CRs (g, r, i, z)=')
 print(len(RA_D4), len(RA_D2), len(RA_E2), len(RA_E4))
