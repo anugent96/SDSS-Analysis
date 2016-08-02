@@ -14,12 +14,12 @@ import itertools
 import pandas
 df = pandas.read_csv(image1, sep = ',', header=None)
 
-deVAB_r = df.values[:,0]
-deVAB_z = df.values[:,1]
-lnDeV_r = df.values[:,2]
-lnDeV_z = df.values[:,3]
-deVABErr_r = df.values[:,4]
-deVABErr_z = df.values[:,5]
+deVAB_r = df.values[:,0] #b/a r-filter
+deVAB_z = df.values[:,1] #b/a z-filter
+lnDeV_r = df.values[:,2] #ln(likelihod DEV), r-filter
+lnDeV_z = df.values[:,3] #ln(likelihood DEV), z-filter
+deVABErr_r = df.values[:,4] #b/a error, r-filter
+deVABErr_z = df.values[:,5] #b/a error, z-filter
 
 import numpy as np
 
