@@ -1,3 +1,8 @@
+"""
+For objects with a 90% chance or higher of being EXP type, code wil give a new half-light radius (EXP) histogram. For r and z filters.
+"""
+
+
 import sys
 image1 = str(sys.argv[1]) # SDSS csv file
 
