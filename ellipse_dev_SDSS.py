@@ -33,7 +33,7 @@ dABErr_r = np.array([float(x) for x in deVABErr_r if x != 'deVABErr_r'])
 dABErr_z = np.array([float(x) for x in deVABErr_z if x != 'deVABErr_z'])
 
 from operator import truediv
-def ellipticity(x): # converting b/a (semi-major, semi-minor axis) into ellipticity constant
+def ellipticity(x): # converting b/a (semi-minor/semi-major axis) into ellipticity constant
     e = truediv((1-x),(1+x))
     return e
 
