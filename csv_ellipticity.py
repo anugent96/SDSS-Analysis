@@ -80,3 +80,11 @@ while i < len(dev_e_r):
     i += 1
 
 
+j = 0
+while j < len(dev_e_r):
+    x = exp_e_r[j]
+    y = ra2[j]
+    w = dec2[j]
+    if a > 0.75:
+        print(y, x, w)
+    j += 1
