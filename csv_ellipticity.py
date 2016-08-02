@@ -1,3 +1,7 @@
+"""
+Prints extreme elliptcity values (e > 0.75) and the ra and dec of these objects.
+"""
+
 import sys
 image1 = str(sys.argv[1]) # SDSS csv file
 
@@ -23,11 +27,11 @@ rE_g = df.values[:,8]
 rE_r = df.values[:,9]
 rE_z = df.values[:,10]
 #Ellipticity based on filter
-deVAB_g = df.values[:,11]
+deVAB_g = df.values[:,11] # b/a (semi-major, semi-minor axis) de Vaucouleurs ellipticity
 deVAB_r = df.values[:,12]
 deVAB_z = df.values[:,13]
 
-expAB_g = df.values[:,14]
+expAB_g = df.values[:,14] # b/a (semi-major, semi-minor axis) exponential ellipticity
 expAB_r = df.values[:,15]
 expAB_z = df.values[:,16] 
 
@@ -58,18 +62,21 @@ eAB_z = [float(x) for x in expAB_z if x != 'expAB_z']
 
 # Getting ellipticity value from b/a
 from operator import truediv
-def ellipticity(x):
+def ellipticity(x): # converting from b/a to ellipticity constant
     e = truediv((1-x),(1+x))
     return e
 
-dev_e_g = [ellipticity(x) for x in dAB_g if x !=0]
-dev_e_r = [ellipticity(x) for x in dAB_r if x !=0]
-dev_e_z = [ellipticity(x) for x in dAB_z if x !=0]
+dev_e_g = [ellipticity(x) for x in dAB_g]
+dev_e_r = [ellipticity(x) for x in dAB_r]
+dev_e_z = [ellipticity(x) for x in dAB_z]
 
-exp_e_g = [ellipticity(x) for x in eAB_g if x !=0]
-exp_e_r = [ellipticity(x) for x in eAB_r if x !=0]
-exp_e_z = [ellipticity(x) for x in eAB_z if x !=0]
+exp_e_g = [ellipticity(x) for x in eAB_g]
+exp_e_r = [ellipticity(x) for x in eAB_r]
+exp_e_z = [ellipticity(x) for x in eAB_z]
 
+"""
+Print ra and dec for extreme ellipticity objects.
+"""
 i = 0
 while i < len(dev_e_r):
     a = dev_e_r[i]
