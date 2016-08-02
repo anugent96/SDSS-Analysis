@@ -27,11 +27,11 @@ rE_g = df.values[:,8]
 rE_r = df.values[:,9]
 rE_z = df.values[:,10]
 #Ellipticity based on filter
-deVAB_g = df.values[:,11] # b/a (semi-major, semi-minor axis) de Vaucouleurs ellipticity
+deVAB_g = df.values[:,11] # b/a (semi-minor/semi-major axis) de Vaucouleurs ellipticity
 deVAB_r = df.values[:,12]
 deVAB_z = df.values[:,13]
 
-expAB_g = df.values[:,14] # b/a (semi-major, semi-minor axis) exponential ellipticity
+expAB_g = df.values[:,14] # b/a (semi-minor/semi-major axis) exponential ellipticity
 expAB_r = df.values[:,15]
 expAB_z = df.values[:,16] 
 
